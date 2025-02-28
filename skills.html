@@ -23,7 +23,8 @@
         header {
             background-color: black;
             color: white;
-            padding: 15px;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,18 +58,19 @@
             font-size: 1em;
             border-radius: 5px;
             border: none;
-            background-color: #555;
+            background-color: #000000;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .dropdown:hover {
-            background-color: #777;
+            background-color: #333;
         }
         .container {
             flex-grow: 1;
             width: 80%;
             margin: 20px auto;
+            margin-top: -50PX;
             padding: 20px;
             background-color: white;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -78,6 +80,10 @@
         h1 {
             color: #333;
 
+        }
+        footer a{
+            color: white;
+            
         }
         .video-container {
             display: flex;
@@ -89,20 +95,42 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        .tor{
-            background: #000000;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 50px;
-            font-size: 210px;
-            font-weight: bold;
-            text-shadow: 2px 20px 25px rgba(255, 255, 255, 0.2);
-            flex-direction: column;
-            cursor: default;
-            position: relative;
-            z-index: 10;
-            mix-blend-mode: lighten;
-        }
+        .dropdown-container {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the dropdown horizontally */
+    gap: 10px;
+    width: 100%; /* Ensures it spans the full width of the container */
+}
+.tor {
+    display: flex;
+    justify-content: center; /* Centers text horizontally */
+    align-items: center; /* Centers text vertically */
+    width: 100%;
+    
+    background: #000000;
+    color: rgb(255, 255, 255);
+    text-align: center;
+     /* Adjust padding to remove extra space */
+     margin-top: 50px;
+    font-size: 210px; /* Adjust font size if needed */
+    font-weight: bold;
+    text-shadow: 2px 20px 25px rgba(255, 255, 255, 0.2);
+    cursor: default;
+    position: relative;
+    z-index: 10;
+    mix-blend-mode: lighten;
+}
+.gallery-title {
+    font-size: 100PX; /* Adjust size as needed */
+    color: white;
+    font-style: oblique;
+    text-align: center;
+    margin-top: -170px; /* Adjust this to bring it closer to "TORRE" */
+    font-weight: bold;
+}
+        
         button{
             background-color: #000000;
             color: white;
@@ -159,7 +187,16 @@
         
         clip-path: text;
         }
-
+        .mhm a {text-decoration: wavy;
+        font-weight: bolder;}
+.mhm{
+    margin-bottom: 80px;
+    margin-top: -100px;
+    padding-top: -75PX;
+    font-size: 20px;
+    text-decoration: double;
+    
+}
         svg.trail path {
         fill: none;
 
@@ -187,11 +224,18 @@
 <body>
 
     <header >
-        <h1 class="tor">TORRE</h1><a href="portfolio.html" class="back-button">Back</a>
+        <h1 class="tor">MORRIS HARRISON</h1>
+        
+        
+    
+    </header>
+    <p class="gallery-title">Project Gallery</p>
+    <a class="mhm" href="index.html"><p >BACK</p></a>
+    <div class="container">
         <div class="dropdown-container">
-            <label for="projectFilter">Filter</label>
+            <label for="projectFilter"></label>
             <select id="projectFilter" class="dropdown" onchange="filterProjects()">
-                <option value="all">All</option>
+                <option value="all">Filter By</option>
                 <option value="gui">GUI</option>
                 <option value="website">Website</option>
                 <option value="game">Game</option>
@@ -199,13 +243,9 @@
                 <option value="other">Other</option>
             </select>
         </div>
-    </header>
-
-    <div class="container">
-        <a href="index.html">Back</a>
         <div class="video-container">
             <div class="video-item" data-category="gui">
-                <h2 class="video-title">GUI Calculator <i class="fa-brands fa-python"></i></h2>
+                <h2 class="video-title">Calculator GUI <i class="fa-brands fa-python"></i></h2>
                 <video autoplay muted loop>
                     <source src="1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -213,14 +253,14 @@
                 <p class="video-description">A Calculator GUI made with Python and Tkinter. </p>
             </div>
             <div class="video-item" data-category="game">
-                <h2 class="video-title">Persona/Undertale inspired JRPG<i class="fa-solid fa-gamepad"></i></h2>
+                <h2 class="video-title">Persona/Undertale inspired JRPG <i class="fa-solid fa-gamepad"></i></h2>
                 <video autoplay muted loop>
                     <source src="2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <p class="video-description">A JRPG made with Gamemaker Studio 2</p>
             </div>
-            <div class="video-item" data-category="gui">
+            <div class="video-item" data-category="os">
                 <h2 class="video-title">Windows <i class="fa-brands fa-windows"></i></h2>
                 <video autoplay muted loop>
                     <source src="8.mp4" type="video/mp4">
@@ -244,7 +284,7 @@
                 </video>
                 <p class="video-description">A GUI to play your Locally Stored Music, made with Python and Tkinter</p>
             </div>
-            <div class="image-item" data-category="website">
+            <div class="image-item" data-category="os">
                 <h2 class="video-title">Ubuntu <i class="fa-brands fa-ubuntu"></i></h2>
                 <img src="pic.png" alt="Image" />
                 <p class="video-description">My Ubuntu Desktop, optimized for software development</p>
@@ -252,8 +292,10 @@
         </div>
     </div>
 
-    <footer class="footer"  ><p>© 2025 Morris Harrison. All rights reserved. <a href="https://github.com/Morris-Harrison"><i style="font-size:24px" class="fa">&#xf09b;</i></a>
-        <a href="mailto:mariomorris8889@outlook.com"><i class="fa fa-envelope"></i></a></p> 
+    <footer class="footer"  ><p>© 2025 Morris Harrison. All rights reserved. 
+        <a href="https://github.com/Morris-Harrison"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:mariomorris8889@outlook.com"><i class="fa fa-envelope"></i></a>
+    </p>
     
 </footer>
     <svg class="trail" viewBox="0 0 1 1">
