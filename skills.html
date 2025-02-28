@@ -4,41 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Video Gallery</title>
     <style>
+        :root {
+        --color-trail: rgb(81, 0, 128);
+        }
         body {
-            font-family: "Arsenal", Arial, sans-serif; /* Fallback fonts */
+            font-family: "Arsenal", Arial, sans-serif;
             text-align: center;
             background-color: #000000;
-            
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            
+            min-height: 100vh;
         }
         header {
-            background: #000000;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 0;
-            margin: 0;
-            font-size: 25px;
-            font-weight: bold;
-            font-style: italic;
-            text-shadow: 2px 20px 5px rgba(255, 255, 255, 0.2);
-            flex-direction: column;
-            cursor: default;
+            background-color: black;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            mix-blend-mode: lighten;
         }
-        footer {
+        footer{
             background: #000000;
             color: rgb(255, 255, 255);
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             font-size: 25px;
             font-weight: bold;
             font-style: italic;
             flex-direction: column;
             cursor: default;
+            z-index: 10;
+            mix-blend-mode: lighten;
+        }
+        .dropdown-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dropdown-container label {
+            font-size: 1em;
+            color: white;
+        }
+        .dropdown {
+            padding: 8px 12px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            background-color: #555;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .dropdown:hover {
+            background-color: #777;
         }
         .container {
             flex-grow: 1;
@@ -48,10 +73,10 @@
             background-color: white;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 40px;
+            z-index: 10;
         }
         h1 {
-            color: #ffffff; /* Lighter color for better contrast */
-            font-size: 250px;
+            color: #333;
 
         }
         .video-container {
@@ -64,95 +89,176 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
+        .tor{
+            background: #000000;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 50px;
+            font-size: 210px;
+            font-weight: bold;
+            text-shadow: 2px 20px 25px rgba(255, 255, 255, 0.2);
+            flex-direction: column;
+            cursor: default;
+            position: relative;
+            z-index: 10;
+            mix-blend-mode: lighten;
         }
-        video {
+        button{
+            background-color: #000000;
+            color: white;
+            border-radius: 40px;
+            font-size: xx-large;
+            cursor: pointer;
+            justify-content: center;
+            text-align: center;
+            mix-blend-mode: luminosity;
+            
+        }
+        iframe, video, img {
             width: 100%;
             height: auto;
             border: 1px solid #ddd;
             border-radius: 8px;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        a {
-            color: #333;
-            text-decoration: none;
-            margin-top: 20px;
-            display: inline-block;
         }
         .video-title {
-            font-size: xx-large;
-            
-            color: #000000;
+            font-size: 1.2em;
+            color: #333;
             margin-top: 10px;
+        }
+        .back-button {
+            position: absolute;
+            left: 20px;
+            padding: 10px 15px;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-button:hover {
+            background-color: #ff4f4f;
         }
         .video-description {
             font-size: 1em;
-            color: #333;
+            color: #666;
             margin-top: 5px;
         }
+        footer {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        svg.trail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 0.1;
+        
+        
+        clip-path: text;
+        }
+
+        svg.trail path {
+        fill: none;
+
+        stroke: var(--color-trail);
+        stroke-width: 8px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        }
     </style>
+    <script>
+        function filterProjects() {
+            let category = document.getElementById("projectFilter").value;
+            let projects = document.querySelectorAll(".video-item, .image-item");
+
+            projects.forEach(project => {
+                if (category === "all" || project.dataset.category === category) {
+                    project.style.display = "block";
+                } else {
+                    project.style.display = "none";
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 
-    <header>
-        <h1>Project Gallery</h1>
+    <header >
+        <h1 class="tor">TORRE</h1><a href="portfolio.html" class="back-button">Back</a>
+        <div class="dropdown-container">
+            <label for="projectFilter">Filter</label>
+            <select id="projectFilter" class="dropdown" onchange="filterProjects()">
+                <option value="all">All</option>
+                <option value="gui">GUI</option>
+                <option value="website">Website</option>
+                <option value="game">Game</option>
+                <option value="os">Operating System</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
     </header>
 
     <div class="container">
         <a href="index.html">Back</a>
         <div class="video-container">
-            <div class="video-item">
-                <h2 class="video-title">Calculator GUI <i style="font-size:24px" class="fab">&#xf270;</i></h2>
+            <div class="video-item" data-category="gui">
+                <h2 class="video-title">GUI Calculator <i class="fa-brands fa-python"></i></h2>
                 <video autoplay muted loop>
                     <source src="1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="video-description">This is a Calculator GUI made with Tkinter, it uses the --</p>
+                <p class="video-description">A Calculator GUI made with Python and Tkinter. </p>
             </div>
-            <div class="video-item">
-                <h2 class="video-title">Video 2 Title</h2>
+            <div class="video-item" data-category="game">
+                <h2 class="video-title">Persona/Undertale inspired JRPG<i class="fa-solid fa-gamepad"></i></h2>
                 <video autoplay muted loop>
                     <source src="2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="video-description">This is a description for the second video. It explains what happens in the video.</p>
+                <p class="video-description">A JRPG made with Gamemaker Studio 2</p>
             </div>
-            <div class="video-item">
-                <h2 class="video-title">YouTube Video 1</h2>
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID" allowfullscreen></iframe>
-                <p class="video-description">This is a description for the first YouTube video. It explains the content of the video.</p>
+            <div class="video-item" data-category="gui">
+                <h2 class="video-title">Windows <i class="fa-brands fa-windows"></i></h2>
+                <video autoplay muted loop>
+                    <source src="8.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="video-description">My ACER Gaming PC Desktop</p>
             </div>
-            <div class="video-item">
-                <h2 class="video-title">YouTube Video 2</h2>
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID" allowfullscreen></iframe>
-                <p class="video-description">This is a description for the second YouTube video. It explains the content of the video.</p>
+            <div class="video-item" data-category="game">
+                <h2 class="video-title">Aurora Borealis Presentation <i class="fa-solid fa-video"></i></h2>
+                <video autoplay muted loop>
+                    <source src="7.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="video-description">A presentation on Aurora Borealis developed using GameMaker Studio 2</p>
             </div>
-            <div class="video-item">
-                <h2 class="video-title">Video 3 Title</h2>
+            <div class="video-item" data-category="gui">
+                <h2 class="video-title">Music Player GUI <i class="fa-brands fa-python"></i></h2>
                 <video autoplay muted loop>
                     <source src="3.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p class="video-description">This is a description for the third video. It explains what happens in the video.</p>
+                <p class="video-description">A GUI to play your Locally Stored Music, made with Python and Tkinter</p>
             </div>
-            <div class="image-item">
+            <div class="image-item" data-category="website">
+                <h2 class="video-title">Ubuntu <i class="fa-brands fa-ubuntu"></i></h2>
                 <img src="pic.png" alt="Image" />
-                <p class="video-description">This is an image description. It provides more context about the image displayed. </p>
+                <p class="video-description">My Ubuntu Desktop, optimized for software development</p>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2025 Morris Harrison. All rights reserved.</p>
-    </footer>
-
+    <footer class="footer"  ><p>© 2025 Morris Harrison. All rights reserved. <a href="https://github.com/Morris-Harrison"><i style="font-size:24px" class="fa">&#xf09b;</i></a>
+        <a href="mailto:mariomorris8889@outlook.com"><i class="fa fa-envelope"></i></a></p> 
+    
+</footer>
+    <svg class="trail" viewBox="0 0 1 1">
+        <path d="" />
+      </svg>
+    <script src="trail.js"></script>
 </body>
 </html>

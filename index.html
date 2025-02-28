@@ -4,129 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title >Morris Harrison</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Morris Harrison</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            
         }
         :root {
-        --color-trail: red;
+            --color-trail: rgb(81, 0, 128);
         }
         body {
             font-family: 'Arsenal', sans-serif;
-            
+            background-color: #000000; /* Set background to black */
+            color: white; /* Set default text color to white */
         }
         .container {
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
             
         }
-        .header  {
+        .header {
             background: #000000;
             color: rgb(255, 255, 255);
             text-align: center;
             padding: 50px;
-            font-size: 250px;
+            font-size: 210px;
             font-weight: bold;
-            font-style: italic;
-            text-shadow: 15px 15px 25px rgba(255, 255, 255, 0.2);
+            text-shadow: 2px 20px 25px rgba(255, 255, 255, 0.2);
             flex-direction: column;
             cursor: default;
             position: relative;
             z-index: 10;
-            mix-blend-mode: luminosity;
+            mix-blend-mode: lighten;
+        }
+        .header-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Space between icons */
+            margin-top: -40px;
             
+        }
+        .header-links a {
+            color: white; /* White icons */
+            font-size: 30px;
+            text-decoration: none;
+            z-index: 10;
+            mix-blend-mode: lighten;
+        }
+        .header-links a:hover {
+            color: #d9d9d9; /* Slight color change on hover */
         }
         .footer { 
             background: #000000;
             color: rgb(255, 255, 255);
             text-align: center;
-            padding: 20px;
+            
             font-size: 25px;
             font-weight: bold;
             font-style: italic;
             flex-direction: column;
             cursor: default;
+            z-index: 10;
+            mix-blend-mode: lighten;
         }
-        .main {
+        .footer a{ 
+            color: white;
+        }
         
+        .main {
             background: #000000;
             display: flex;
             flex-direction: row;
             flex: 1;
             color: white;
-            
         }
         .sidebar {
-            width: 40%;
-            background: #000000;
+            width: 20%;
+            background: #333;
             display: flex;
             padding: 90px;
-            
         }
-        
         .content {
-            flex: 1;
-            padding: 40px;
             display: flex;
+            flex-direction: row;
+            flex: 1;
+            font-size: 50px;
+            padding-left: 80px;
+            padding-right: 120px;
+            padding-top: 40px;
+            align-items: flex-start;
             
-
         }
         
-        .sidebar img {
-            
+        a{
+            text-decoration: none;
+        }
+        .content section {
+            margin-top: 20px; /* Adjust this value to move the text lower */
+        }
+        .content img {
             height: 500px;
-            border-radius: 70px;
-            margin-bottom: 10px;
+            width: 1000px;
+            border-radius: 20%;
+            margin-right: 20px;
+            mix-blend-mode: lighten;
+            box-shadow: 0px 4px 20px rgba(145, 44, 228, 0.5);
         }
         .sidebar, .content {
-            min-height: 150vh; /* Make content longer to require scrolling */
-            
+            min-height: 60vh; /* Make content longer to require scrolling */
+            z-index: 10;
+            mix-blend-mode: lighten;
         }
-
+        
         svg.trail {
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 0.1;
-        
-        
-        clip-path: text;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0.1;
+            clip-path: text;
         }
-
         svg.trail path {
-        fill: none;
-
-        stroke: var(--color-trail);
-        stroke-width: 8px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+            fill: none;
+            stroke: var(--color-trail);
+            stroke-width: 8px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">Morris Harrison</header>
-        <div class="main">
-            <aside class="sidebar"><img src= "pfp.png">Sidebar Content</aside>
-            <section class="content">Main Content <a href="skills.html">Projects</a></section>
+        <header class="header">MORRIS HARRISON</header>
+        <div class="header-links">
+            <a>
+                <i class="fa-brands fa-git-alt"></i>
+            </a>
+            <a href="https://github.com/Morris-Harrison" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a>
+                <i class="fa-brands fa-html5"></i> 
+            </a>
+            <a>
+                <i class="fa-brands fa-css3"></i> 
+            </a>
+            <a>
+                <i class="fa-brands fa-js"></i> 
+            </a>
+            <a>
+                <i class="fa-brands fa-python"></i>
+            </a>
+            <a>
+                <i class="fa-brands fa-raspberry-pi"></i>
+            </a>
+            <a>
+                <i class="fa-brands fa-windows"></i>     
+            </a>
+            <a>
+                <i class="fa-brands fa-apple"></i>
+            </a>
+            <a>
+                <i class="fa-brands fa-linux"></i>
+            </a>
+            
+            
         </div>
-        <footer class="footer" ><p>© 2025 Morris Harrison. All rights reserved. <a href="https://github.com/Morris-Harrison"><i style="font-size:24px" class="fa">&#xf09b;</i></a>
-            <a href="mailto:mariomorris8889@outlook.com"><i class="fa fa-envelope"></i></a></p> 
+
+        <!-- This section is now moved above .torre -->
+        <div class="content">
+            <img src="pfp.png" alt="Profile Picture">
+            <section>Aspiring IT Technician and hobbyist Software Developer based in British Columbia. Programming since 2023, my skillset includes a wide array of Languages and Technologies.
+              
+                Feel free to browse my <a href="skills.html">Project Gallery</a> where you will find my latest Websites, Games, Interfaces and more!
+            </section>
+            
+            
+        </div>
+
         
-    </footer>
+        <footer class="footer">
+            <p>© 2025 Morris Harrison. All rights reserved. 
+                <a href="https://github.com/Morris-Harrison"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:mariomorris8889@outlook.com"><i class="fa fa-envelope"></i></a>
+            </p>
+        </footer>
     </div>
     <svg class="trail" viewBox="0 0 1 1">
         <path d="" />
-      </svg>
+    </svg>
     <script src="trail.js"></script>
 </body>
 </html>
