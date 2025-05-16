@@ -4,3 +4,4 @@
 new skills to add
 
 - scraping websites
+- ai
