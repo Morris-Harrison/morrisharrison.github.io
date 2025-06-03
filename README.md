@@ -11,3 +11,4 @@ new skills to add
 - node js
 - ruby
 - mongodb
+- react
