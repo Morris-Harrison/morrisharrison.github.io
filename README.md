@@ -12,3 +12,4 @@ new skills to add
 - ruby
 - mongodb
 - react
+- react native
